@@ -32,4 +32,5 @@ OptionParser.new do |opts|
   end
 end.parse!
 
+options[:environment] ||= ARGV[0]
 Capssh.execute(options)
