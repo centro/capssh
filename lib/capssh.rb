@@ -15,7 +15,7 @@ module Capssh
       end
 
       if config.find_servers.empty?
-        display_error_and_exit("Please speicfy a valid environment: #{valid_environments.join(", ")}")
+        display_error_and_exit("Please specify a valid environment: #{valid_environments.join(", ")}")
       end
 
       servers = config.find_servers(:roles => role)
