@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'capssh'
+
+if File.exist?('Gemfile')
+  require 'bundler'
+  begin
+    Bundler.setup(:default, :development)
+  rescue Bundler::BundlerError => e
+    $stderr.puts e.message
+    $stderr.puts "Run `bundle install` to install missing gems"
+    exit e.status_code
+  end
+end
+
+Capssh.execute(ARGV[0], ARGV[1])
