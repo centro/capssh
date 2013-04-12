@@ -22,6 +22,9 @@ capssh -e production -r db
 # If you only have one server defined, you can connect to it by simply running capssh
 capssh
 
+# SSH to the production server and kick off the Rails console
+capssh -e production -c
+
 # See all available options
 capssh -h
 ```
