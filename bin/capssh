@@ -29,6 +29,10 @@ OptionParser.new do |opts|
     options[:role] = role
   end
 
+  opts.on("-c", "--console", "Fire up a rails console in the project's deployment directory after connecting to the machine.") do
+    options[:console] = true
+  end
+
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
     exit

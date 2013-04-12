@@ -1,3 +1,9 @@
+## 0.0.3 / April 12, 2013
+
+* Added ability to kick off a rails console after connecting to the
+server.
+
+
 ## 0.0.2 / April 12, 2013
 
 * Fixed some bundler dependency issues.

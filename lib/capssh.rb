@@ -24,7 +24,19 @@ module Capssh
       user = config[:user] || ENV['USER']
       server = servers.first
       puts "Connecting to #{environment} #{role} at #{user}@#{server}..."
-      exec "ssh #{user}@#{server}"
+
+      command = nil
+      if options[:console]
+        command = "cd #{config[:deploy_to]}/current; bundle exec rails console #{config[:rails_env]}"
+      end
+
+      ssh_command = "ssh #{user}@#{server}"
+      if command
+        puts "Running command: #{command}"
+        ssh_command += " -t \"#{command}\""
+      end
+
+      exec ssh_command
     end
 
     def display_error_and_exit(error)
