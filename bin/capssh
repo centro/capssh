@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'capssh'
 require 'optparse'
+require 'capssh'
+require 'capssh/version'
 
 if File.exist?('Gemfile')
   require 'bundler'
@@ -28,6 +29,11 @@ OptionParser.new do |opts|
 
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version") do
+    puts Capssh::VERSION
     exit
   end
 end.parse!
