@@ -1,3 +1,8 @@
+## 0.0.4 / April 12, 2013
+
+* Fixed spelling error in error message.
+
+
 ## 0.0.3 / April 12, 2013
 
 * Added ability to kick off a rails console after connecting to the
