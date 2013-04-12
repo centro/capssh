@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'capistrano'
-
 module Capssh
   class << self
 
