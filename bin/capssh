@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'capssh'
+require 'optparse'
 
 if File.exist?('Gemfile')
   require 'bundler'
@@ -13,4 +14,22 @@ if File.exist?('Gemfile')
   end
 end
 
-Capssh.execute(ARGV[0], ARGV[1])
+options = {:role => :app}
+OptionParser.new do |opts|
+  opts.banner = "Usage: capssh [options]"
+
+  opts.on("-e ENVIRONMENT", "--environment ENVIRONMENT", "Specify the environment to connect to") do |env|
+    options[:environment] = env
+  end
+
+  opts.on("-r ROLE", "--role ROLE", "Specify the role of the machine to connect to.  Defaults to :app.") do |role|
+    options[:role] = role
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+Capssh.execute(options)
