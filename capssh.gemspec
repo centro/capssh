@@ -11,4 +11,6 @@ Gem::Specification.new do |s|
   s.files       = ["lib/capssh.rb", "lib/capssh/version.rb"]
   s.executables = ["capssh"]
   s.homepage    = "https://github.com/centro/capssh"
+
+  s.add_development_dependency "rspec"
 end

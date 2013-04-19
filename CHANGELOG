@@ -1,3 +1,9 @@
+## 0.0.6 / April 19, 2013
+
+* Added support for starting the Rails 2.x console.
+* Added tests.
+
+
 ## 0.0.5 / April 15, 2013
 
 * Refactored code.

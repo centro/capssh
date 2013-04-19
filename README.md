@@ -33,6 +33,8 @@ capssh -h
 
 * Fork capssh
 * Create a topic branch - `git checkout -b my_branch`
+* Make your changes
+* Add tests
 * Rebase your branch so that all your changes are reflected in one commit
 * Push to your branch - `git push origin my_branch`
 * Create a Pull Request from your branch, include as much documentation
