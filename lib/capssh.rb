@@ -3,8 +3,13 @@ module Capssh
 
     def execute(options={})
       config = load_capistrano_configuration(options)
-      server = find_server(config, options)
-      exec_ssh_command ssh_command(config, server, options)
+      servers = find_servers(config, options)
+
+      if options[:list_servers]
+        log servers.join(', ')
+      else
+        exec_ssh_command ssh_command(config, servers.first, options)
+      end
     end
 
     private
@@ -28,12 +33,12 @@ module Capssh
       config
     end
 
-    def find_server(config, options)
+    def find_servers(config, options)
       servers = config.find_servers(:roles => options[:role])
       if servers.empty?
         display_error_and_exit("No servers could be found for environment '#{options[:environment]}' and role '#{options[:role]}'")
       end
-      servers.first
+      servers
     end
 
     def ssh_command(config, server, options)

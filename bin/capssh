@@ -33,6 +33,10 @@ option_parser = OptionParser.new do |opts|
     options[:console] = true
   end
 
+  opts.on("-l", "--list", "List the servers defined for the specified environment/role.") do
+    options[:list_servers] = true
+  end
+
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
     exit

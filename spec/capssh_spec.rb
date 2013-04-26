@@ -13,13 +13,25 @@ describe Capssh do
     end
 
     it "should be able to ssh into a box configured for the production environment" do
-      Capssh.should_receive(:exec_ssh_command).with('ssh bobby@foobar.net')
+      Capssh.should_receive(:exec_ssh_command).with('ssh bobby@app1.foobar.net')
       Capssh.execute(:role => :app, :environment => 'production')
     end
 
     it "should be able to ssh into the database server configured for the production environment" do
       Capssh.should_receive(:exec_ssh_command).with('ssh bobby@db.foobar.net')
       Capssh.execute(:role => :db, :environment => 'production')
+    end
+  end
+
+  describe "listing servers" do
+    it "should be able to list the servers for a specific environment" do
+      Capssh.should_receive(:log).with("app1.foobar.net, app2.foobar.net")
+      Capssh.execute(:role => :app, :environment => 'production', :list_servers => true)
+    end
+
+    it "should be able to list the servers for a specific environment and role" do
+      Capssh.should_receive(:log).with("db.foobar.net")
+      Capssh.execute(:role => :db, :environment => 'production', :list_servers => true)
     end
   end
 

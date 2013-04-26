@@ -2,8 +2,6 @@
 
 set :rails_env, 'production'
 
-master = 'foobar.net'
-
 role :db, 'db.foobar.net', :primary => true
-role :app, master
-role :web, master
+role :app, 'app1.foobar.net', 'app2.foobar.net'
+role :web, 'app1.foobar.net', 'app2.foobar.net'
