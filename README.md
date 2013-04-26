@@ -19,6 +19,9 @@ capssh production
 # SSH to the production server that is in the db role
 capssh -e production -r db
 
+# List the app servers that are configured for production
+capssh -e production -r app -l
+
 # If you only have one server defined, you can connect to it by simply running capssh
 capssh
 
