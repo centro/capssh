@@ -25,7 +25,7 @@ describe Capssh do
 
   describe "listing servers" do
     it "should be able to list the servers for a specific environment" do
-      Capssh.should_receive(:log).with("app1.foobar.net, app2.foobar.net")
+      Capssh.should_receive(:log).with("app1.foobar.net\napp2.foobar.net")
       Capssh.execute(:role => :app, :environment => 'production', :list_servers => true)
     end
 

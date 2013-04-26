@@ -1,3 +1,8 @@
+## 0.0.8 / April 26, 2013
+
+* Separate list of servers with a newline character instead of a comma
+
+
 ## 0.0.7 / April 26, 2013
 
 * Display usage if an unknown option is specified.

@@ -6,7 +6,7 @@ module Capssh
       servers = find_servers(config, options)
 
       if options[:list_servers]
-        log servers.join(', ')
+        log servers.join("\n")
       else
         exec_ssh_command ssh_command(config, servers.first, options)
       end
