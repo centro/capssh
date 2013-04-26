@@ -18,7 +18,7 @@ require 'optparse'
 require 'capistrano'
 
 options = {:role => :app}
-OptionParser.new do |opts|
+option_parser = OptionParser.new do |opts|
   opts.banner = "Usage: capssh [options]"
 
   opts.on("-e ENVIRONMENT", "--environment ENVIRONMENT", "Specify the environment to connect to") do |env|
@@ -42,7 +42,14 @@ OptionParser.new do |opts|
     puts Capssh::VERSION
     exit
   end
-end.parse!
+end
+
+begin
+  option_parser.parse!
+rescue OptionParser::InvalidOption => e
+  puts option_parser
+  exit
+end
 
 options[:environment] ||= ARGV[0]
 Capssh.execute(options)
