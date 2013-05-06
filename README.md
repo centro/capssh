@@ -10,6 +10,18 @@ gem install capssh
 **capssh must be run from your project's root directory.**
 
 ```
+$ capssh -h
+Usage: capssh [options]
+    -e, --environment ENVIRONMENT    Specify the environment to connect to
+    -r, --role ROLE                  Specify the role of the machine to connect to.  Defaults to :app.
+    -c, --console                    Fire up a rails console in the project's deployment directory after connecting to the machine.
+    -l, --list                       List the servers defined for the specified environment/role.
+    -h, --help                       Show this message
+    -v, --version                    Show version
+```
+
+## Examples
+```
 # SSH to one of the production servers
 capssh -e production
 
